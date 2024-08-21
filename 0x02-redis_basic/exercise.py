@@ -2,7 +2,7 @@
 """Cache class module"""
 import redis
 import uuid
-from typing import Union
+from typing import Callable, Optional, Union
 
 
 class Cache:
@@ -21,7 +21,8 @@ class Cache:
         self._redis.set(random_key, data)
         return random_key
 
-    def get(self, key, fn=None):
+    def get(self, key,
+            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         """Takes in a `key` string argument and an optional Callable args `fn`.
         The callable will be used to convert the data back to the desired
         format. If key does not exist, the original Redis.get method is used
@@ -36,10 +37,11 @@ class Cache:
         else:
             return value
 
-    def get_str(self, string_value):
+    def get_str(self, value) -> str:
         """Returns the converted string data value format"""
+        string_value = value.decode("utf-8")
         return string_value
 
-    def get_int(self, int_value):
+    def get_int(self, int_value) -> int:
         """Returns the converted integer data value format"""
         return int_value
