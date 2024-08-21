@@ -1,0 +1,1 @@
+This task involves getting familiar with Redis, a powerful in-memory data structure store, used as a database, cache, and message broker. The goal of this task is to demonstrate a basic understanding of how to interact with Redis through common commands and operations. Redis is particularly well-suited for applications that require high performance and real-time data access.
